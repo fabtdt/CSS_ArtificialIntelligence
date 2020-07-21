@@ -8,7 +8,7 @@ The code can be runned with new data by connecting it to the Twitter API, to do 
 2. insert the credential into the cell "key and toke" by substituting the value to the "XXXXX"
 3. from the cells: "key and token", "connecting to Twitter", "requiring the tweets", "data preparation", delete "eval = FALSE" from {r eval = FALSE} in order to have
 only {r}
-4. from the cell "reading and further preparation" comment the lines 138 and 139:
+4. from the cell "reading and further preparation" comment the lines 138 and 139: <br>
 *df.ai <- read.csv("df.ai.csv", header = T) # reading* <br>
 *df.ai <- df.ai[,c(2,6,9)] # keeping only useful column* <br>
 and uncomment the line 141: *#df.ai <- df.ai[,c(1,5,8)] # keeping only useful column*
