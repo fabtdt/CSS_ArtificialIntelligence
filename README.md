@@ -1,6 +1,6 @@
 # CSS_ArtificialIntelligence
 
-This work has been done by Fabio Taddei Dalla Torre, University freshman: 214924 for the Computation Social Science course.
+This work has been done by Fabio Taddei Dalla Torre, University freshman: 214924 for the Computational Social Science course.
 
 The main purpose of the work is to investigate public opinion in merit to artificial intelligence.
 
