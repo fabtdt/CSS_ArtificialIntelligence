@@ -1,0 +1,368 @@
+---
+title: "Understanding the public opinion on Artificial Intelligence"
+author: "Fabio Taddei Dalla Torre"
+date: "15/7/2020"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+# I. Introduction
+
+Artificial intelligence (AI) refers to systems that display intelligent behavior by analyzing their environment and taking actions – with some degree of autonomy – to achieve specific goals. This is the definition of artificial intelligence given by the European Commission in 2018 [^1].
+
+Many are the possible advantage of this technology, one recent study, for example, related to the COVID-19 pandemic, has proved that models built using machine learning has shown high sensitivity and high specificity in detecting COVID-19 by analyzing chest CT exams [^2]. Moreover, must be said that Artificial Intelligence is already well present in everybody daily life. Every smartphone has some type of assistant like for example "Siri" or "Google Assistant" that displays intelligence like behavior.
+
+Although this theme leads inevitably to some problem. Ex Machina, Trascendecne or Io, Robot, are only three movie title where movie industries has shown a World where human life is threaten by self conscious machine engineering by human themselves. Those are irrelevant but in 2014 Stephen Hawking told to and interview by the BBC: "The development of full artificial intelligence could spell the end of the human race.", a clear warning by one of the most intelligent person of this century.
+
+This work is composed by five main sections.  The second one deals with the formulation of the research question and will be provided a brief literature review on previous studies. Section three describe the methodology used in order to answer to the research question, how data are collected, cleaned and the techniques used. Section four concern the analysis of the data, it contains the codes and comment about the process and the results. The final section gives a summary of the results, also presenting the main advantages and disadvantages of the techniques and processes used. 
+
+[^1]: For the definition of the concept of Artificial Intelligence: European Commission, Brussels, 25-04-2018 http://www.governo.it/sites/new.governo.it/files/CommunicationArtificialIntelligence.pdf
+[^2]: Lin Li, Lixin Qin, Zeguo Xu, Youbing Yin, Xin Wang, Bin Kong, Junjie Bai, Yi Lu, Zhenghan Fang, Qi Song, Kunlin Cao, Daliang Liu, Guisheng Wang, Qizhong Xu, Xisheng Fang, Shiqin Zhang, Juan Xia, Jun Xia, *Artificial Intelligence Distinguishes COVID-19 from Community Acquired Pneumonia on Chest CT*, Radiology, 2020, (doi : https://doi.org/10.1148/radiol.2020200905)
+
+
+# II. Previous studies and research question
+
+From the invention of the World Wide Web until today, this concept has changed and evolved. Among the many implementation that this technology has allowed, the development of social media platform capable of fast and free communication on a global scale has definitely change our lives. It is estimated that, in 2020, the global social penetration reach has reached 49%, with a peak considering Asia and North America that respectively scored a rate of 71% and 69%. Northern Europe fallowed with a slightly lower 67% [^3]. From those statistics is easy to understand the gold mine that social media represent from an opinion mining point of view. 
+
+The aim of this work is to:
+
+* Gain a general understanding about the opinion of people, what they think about artificial intelligence. Therefore it aims to understand what are the feeling and the sentiment of people, are they excited or do they fear this technology? 
+* Try to understand  whether are present or not different conversation topic about this subject. Maybe there will be a group of people or organisation that promote AI while others will be more skeptical and criticize it. 
+* Investigate what are the words that are most common in the negative sentiment tweets and in the positive one in order to understand if there is a potential correlation between these terms and the emotions.
+
+This analysis will be carried out by using Tweets, firstly because it guarantees open data despite other platforms but even because of the large amount of available content. In 2012 it was calculated that registered users produced a total of 340 million tweets per day [^4]. People does not use Twitter only for sharing personal content but also for expressing their opinion. Because of this behavior by analyzing this tweets, first with more qualitative technique and then with a sentiment analysis, is possible to understand the perception of users to a certain topic [^5].
+
+From business and marketing purpose to politics, opinion mining is becoming more and more important in order to understand people thought and so for building better strategies [^6]. A pivotal factor in opinion mining is sentiment analysis, in this case the technique tries to understand the sentiment of the writer by judging the document. The object of the analysis is to assign for each document (in this case each tweets) a predefined sentiment (positive, negative...), this classification is based on machine learning and lexicon based approaches [^7]. One point that needs attention when working with Twitter data is the difference between standard text that are used in building sentiment analysis algorithm and tweets. First of all because of the length of those, 140 character maximum, and second, because of their nature, tweets tend to have misspelling and slang with a relative high rate. [^8]
+
+Many studies have been conducted using sentiment analysis and topic modelling on tweets. Indeed, in [^9] S.Yang and H.Zhang has used sentiment analysis and LDA topic modelling in order to understand the potential of these techniques on twitter data. S. Yang et all have proven that LDA allows to easily analyze huge number of tweets and to identify hidden topics. The sentiment analysis was carried on by using the **syuzhet** package and the results has proved that is a powerful tool for understanding and showing the sentiment and emotions present on tweets.  A. Alamsyah [^10] et all, have shown that using LDA and sentiment analysis lead to the capability of extracting meaningful insights about a specific topic using large scale dataset. Compared to traditional method they have stated that those techniques allows better in-time processing.
+
+[^3]: J.Clement, *Social media - Statistics & Facts*, Statista, 2020 , available at: https://www.statista.com/topics/1164/social-networks/
+[^4]: T. K. Das, D. P. Acharjya and M. R. Patra, *Opinion mining about a product by analyzing public tweets in Twitter*, 2014 International Conference on Computer Communication and Informatics, Coimbatore, 2014, pp. 1-4 (doi: 10.1109/ICCCI.2014.6921727.)
+[^5]: B. Gokulakrishnan, P. Priyanthan, T. Ragavan, N. Prasath and A. Perera, *Opinion mining and sentiment analysis on a Twitter data stream*, International Conference on Advances in ICT for Emerging Regions (ICTer2012), Colombo, 2012, pp. 182-188 (doi: 10.1109/ICTer.2012.6423033)
+[^6]: R. K. Bakshi, N. Kaur, R. Kaur and G. Kaur, *Opinion mining and sentiment analysis*, 2016 3rd International Conference on Computing for Sustainable Global Development (INDIACom), New Delhi, 2016, pp. 452-455.
+[^7]: B.Sampath Kumar, D.Bhanu Sree Reddy, *An Analysis on Opinion Mining: Techniques and Tools*, Indian Journal of Research (2016)
+[^8]: A.Go, R. Bhayani, *Twitter Sentiment Classification using Distant Supervision*,Stanford: CS224N Project Report , 2009
+[^9]: S.Yang, H.Zhang, *Text Mining of Twitter Data Using an LDA Topic Model and Sentiment Analysis*, World Academy of Science, Engineering and Technology International Journal of Computer and Information Engineering Vol:12, No:7, 2018
+[^10]: A. Alamsyah, W. Rizkika, D. D. A. Nugroho, F. Renaldi and S. Saadah, *Dynamic Large Scale Data on Twitter Using Sentiment Analysis and Topic Modeling*, 2018 6th International Conference on Information and Communication Technology (ICoICT), Bandung, 2018, pp. 254-258, doi: 10.1109/ICoICT.2018.8528776.
+ 
+
+# III. Methodology
+
+In order to accomplish my task I will use the Twitter standard API with the package **twitteR**. I will request 7000 tweets by the hashtag *#AI*.
+
+The first step of the analysis will be cleaning the tweets. This process will be done by working on a database created with the requested tweets. At the end of this procedure I will get two different text corpus and a cleaned data-set with three column: one containing the text, one the creation date and one with the unique tweet ID. I have decided to create a data-set for further analysis and for consistency of the results, indeed all the code can be runned by taking the information from the *df.ai.csv*.
+
+Furthermore, the tweets gathered are only English one with the exclusion of retweet. This because, from one side the sentiment classifier works only with English vocabulary and on the other side because high frequency retweets could distort the percentages of word occurrence. 
+
+As a consequent step I will proceed by plotting a word cloud in order to give a visual representation of the word that occur the most among all the tweets. To strength this I decided to plot a bar-plot with words that has been registered more than 150 times. This because the bar-plot allows to have a closer idea of the importance of a word.
+
+The previous analysis gives a general idea of the most important words but if gives no insight on how these terms are used together. For this exploration we can use a Word Network, in this case words are linked together according to their presence with respect to one another.
+
+The next steps will regard Topic Modelling. The aim of this technique is to present the text as a set of topics and so to find different topics among the tweets. Once topics are founded the tweets will be labeled according to that, for further analysis. This procedure will be done by using LDA technique. LDA topic modelling is based on a probabilistic model approach and in particular is based on the assumption that documents are a mixture of topic and that each topic is composed by a certain probability distribution of words.
+
+The last step regard a sentiment analysis of tweets. This will be done by using the package **syuzhet** because it allows to label tweets not only as positive or negative but also with a range of other emotions (anger, anticipation, disgust, fear, joy, negative, positive, sadness, surprise, trust). The algorithm works by the NRC emotion-Lexicon that is a list of English words associated to emotions and sentiments. At first the result will be displayed cumulatively in order to have a general overview of people's sentiment and then, after normalizing the result, will be produced a grouped bar chart that allows the comparison of the sentiment according to the topic.
+Moreover, understanding what makes a tweet negative or positive will be done by computing a binomial sentiment analysis and by displaying the most occurrence word for negative and positive sentiment.
+
+
+# VI. Analysis
+
+```{r  message=FALSE, warning=FALSE}
+#Library
+library(twitteR)
+library(wordcloud)
+library(topicmodels)
+library(dplyr)
+library(stringr)
+library(tm)
+library(ggplot2)
+library(tidytext)
+library(tidyverse)
+library(igraph)
+library(ggraph)
+library(widyr)
+library(quanteda)
+library(syuzhet)
+library(data.table)
+```
+
+### Twitter access and authentication 
+
+```{r eval = FALSE}
+# key and token
+consumer_key <- XXXXXX
+consumer_secret <- XXXXXX
+access_token <- XXXXXX
+access_secret <- XXXXXX
+```
+
+Getting twitter access
+```{r eval = FALSE} 
+# connecting to Twitter
+setup_twitter_oauth(consumer_key,
+                    consumer_secret,
+                    access_token,
+                    access_secret)
+```
+
+Getting tweets
+```{r eval = FALSE}
+# requiring the tweets
+tweets <- searchTwitter("#AI -filter:retweets", n=7000, lang = "en") # requiring tweets
+length(tweets)
+```
+
+### Data claning 
+
+```{r eval = FALSE}
+# data preparation
+df.ai <- bind_rows(lapply(tweets, as.data.frame))
+df.ai$text <- gsub("((?:\\b\\W*@\\w+)+)", "", df.ai$text) # Remove usernames
+df.ai$text <- gsub("http.+ |http.+$", "", df.ai$text)     # removing links
+df.ai <- df.ai[!duplicated(df.ai[, 'id']),]               # removing duplicates
+df.ai$text <- gsub("[^[:graph:]]", " ", df.ai$text)       # removing graphical
+df.ai$text <- gsub("[[:punct:]]", " ", df.ai$text)        # remoove punctuation
+df.ai$text <- gsub("^ ", "", df.ai$text)                  # remove spaces at the beginning
+df.ai$text <- gsub(" $", "", df.ai$text)                  # remove spaces at the end
+df.ai$text <- tolower(df.ai$text)                         # transform the whole text to lower
+df.ai$text <- removeWords(df.ai$text, stopwords('en'))    # removing stopwords
+df.ai$text <- gsub("[ |\t]{2,}", " ", df.ai$text)         # removing tabs
+df.ai$text <- gsub(" +", " ", df.ai$text)                 # removing spaces
+df.ai$text <- iconv(df.ai$text, to = "ASCII", sub = " ")  # converting to ascii
+df.ai$text <- gsub('[0-9]+', "", df.ai$text)              # removing numbers
+df.ai$text <- removeWords(df.ai$text, c("9", "10", "18","19", "5", "0", "46", "1", "2", "’s", "-", "amp")) # removing certain char
+```
+
+At the end of this cleaning process the prepared dataset is saved
+```{r eval = FALSE}
+#write.csv(df.ai,file=paste("df.ai.csv"))
+```
+
+For consistency and reproducibility of the results the following manipulation will be done by loading and using the saved dataset
+
+```{r}
+# reading and furhter preparation
+df.ai <- read.csv("df.ai.csv", header = T) # reading 
+df.ai <- df.ai[,c(2,6,9)] # keeping only useful column
+
+#df.ai <- df.ai[,c(1,5,8)] # keeping only useful column
+#View(df.ai)
+
+tweets_text_network <- Corpus(VectorSource(df.ai$text)) # creating a text corpus used of the network
+
+df.ai$text <- removeWords(df.ai$text, c("ai", "artificial intelligence", "artificialintelligence", "intelligence")) # removing some other particualar words
+df.ai$text <- stripWhitespace(df.ai$text)                       # removing white spaces
+df.ai$text <- gsub(" +", " ", df.ai$text)                       # removing spaces
+   
+df.ai$text <- gsub("\\s+", " ", str_trim(df.ai$text))
+df.ai <- df.ai[!(df.ai$text == " "), ]  # removing tweet with only spaces
+df.ai <- df.ai[!(df.ai$text == ""), ] # removing empty tweet
+df.ai <- df.ai[nchar(as.character(df.ai$text)) > 3, ]
+
+#dim(df.ai) # left with
+#View(df.ai)
+#write.csv(df.ai,file=paste("df.ai.csv"))
+
+tweets_text_corpus <- Corpus(VectorSource(df.ai$text)) # creating another text corpus for the word cloud
+
+```
+
+### Understanding the word significance
+
+Creating a wordcloud in order to visualize the most important words
+```{r warning=FALSE}
+wordcloud(tweets_text_corpus, min.freq = 7, max.words = 200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))#, scale= c(3,0.25))
+```
+
+From the Word cloud can be seen as the most used word are the one that are related with the technological world, machine, big-data, technology and machine learning are examples of the most used. Nevertheless are present word that concern the business area like for example business, marketing or industry.
+
+Displaying a bar-chart of the words that has an concurrency greater than 150 times.
+```{r warning=FALSE}
+dtm <- DocumentTermMatrix(tweets_text_corpus)
+
+freq = colSums(as.matrix(dtm)) # let's see the most frequent words 
+ord.df <- data.frame(words = names(freq), count = freq)
+ord.df <- ord.df[order(-ord.df$count),]
+ord.df <- ord.df[which(ord.df$count >= 150),]
+ord.df$words <- factor(ord.df$words, levels = ord.df$words)
+ord.df = ord.df[-3,]
+#View(ord.df)
+```
+
+```{r}
+ggplot(data = ord.df, aes(x = words, y = count)) + 
+  geom_col(stat = 'identity', width = 0.7, alpha = 0.7, fill = "#009999") + coord_flip() +
+    labs(title="Barplot of the most used words", y="Occurence", x="Words") +
+      theme_classic() + theme(panel.border = element_rect(colour = "black", fill=NA))
+```
+
+This plot allows us to have a better idea of the occurrence of the words. As already said the most important one are related to the technology but we can see that either business and COVID-19 has more than 200 occurrences. 
+
+### Understanding the correlation among the words
+
+Creating the network text
+```{r warning=FALSE}
+corp_net <- corpus(tweets_text_network)
+tokns <- tokens(corp_net)
+tokns<- tokens_remove(tokns, pattern = stopwords('en'))
+tokns <- tokens_select(tokns,c("t","s",'"',"'", '-'), selection = "remove")
+fcmat <- fcm(tokns, context = "document", tri = FALSE)
+feat <- names(topfeatures(fcmat, 30))
+fcm_select(fcmat, pattern = feat) %>% textplot_network(min_freq = 0.7)
+```
+
+Because the selection of the Tweets was made by searching for tweets with the hashtag *#AI* this term is in the center and it is the one that connect with all the others. Thanks to this visualization we can notice how the most used and linked words (the one with the more marked blue line) are the one that are most related to the technology where others are less mentioned and less related together.
+
+### Topic Modelling
+
+For what I have stated before I will try two topic modelling.
+
+```{r}
+#Set parameters for Gibbs sampling
+seed <-list(2003,5,63,100001,765)
+
+#Run LDA using Gibbs sampling
+ldaOut <-LDA(dtm,2, method="Gibbs", control=list(nstart=5, seed = seed, best=T, burnin = 4000, iter = 2000, thin=500))
+```
+
+
+```{r}
+terms = as.matrix(terms(ldaOut,20))
+terms
+```
+
+From the top 20 words per topic it can be stated that topic one is more Technical oriented presenting words like: data, machine learning, big data, analytic and so one. The second topic result to be more general with word like: market, future, global, industry, healthcare, digital. This distinction may suggest that there exist a distinction of knowledge on the people that tweets about this topic.
+
+Creating a column in the dataframe with the topic number
+```{r}
+ldaOut.topics <- as.matrix(topics(ldaOut))
+df.ai$topics <- ldaOut.topics
+df.ai$topics <- as.factor(df.ai$topics)
+#View(df.ai)
+```
+
+Plotting pie for different topics
+```{r}
+ ggplot(df.ai, aes(x="", y = topics, fill = topics)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) +
+  theme_minimal() +
+  theme(
+  axis.title.y = element_blank(),
+  panel.border = element_blank(),
+  panel.grid=element_blank(),
+  axis.ticks = element_blank(),
+  plot.title=element_text(size=14, face="bold")
+  ) + theme(axis.text.x=element_blank())
+```
+
+This chart shows that the majority of the tweets are about topic two and so there are more "soft" knowledge tweets than deep knowledge one.
+
+### Sentiment analysis
+
+Performing the sentiment of the tweets and adding the result to the dataset
+```{r}
+sentiment <- data.frame(get_nrc_sentiment(df.ai$text))
+
+total <-  data.frame(sum = colSums(sentiment, na.rm = TRUE)) #create a dataset that contin the sum of the sentyment 
+
+df.ai <- cbind(df.ai, sentiment)
+
+# creating a dataset with the same of the sentiment according to the topic
+sent.topic <- data.frame(topic_1 = colSums(df.ai[which(df.ai$topics == "1"), 5:14]))
+sent.topic <- cbind(sent.topic, data.frame(topic_2 = colSums(df.ai[which(df.ai$topics == "2"), 5:14])))
+
+# scaling in order to allow comparison
+sent.topic$topic_1 <- abs(scale(sent.topic$topic_1))
+sent.topic$topic_2 <- abs(scale(sent.topic$topic_2))
+
+sent.topic_2 <- data.frame(Sentiment = rep(row.names(sent.topic), 2),
+                           Topic = c( rep("1", length(sent.topic$topic_1)), rep("2", length(sent.topic$topic_2)) ),
+                           Value = c(sent.topic$topic_1, sent.topic$topic_2))
+#View(sent.topic_2)
+```
+
+Plotting
+```{r}
+ggplot (data = total,aes(x = rownames(total), y  = sum, fill = rownames(total))) + 
+ geom_bar(stat="identity", width=0.5) +
+  theme_classic() +
+   theme(legend.title = element_blank(),
+        legend.position = "none") +
+    labs(y = "Total Value", x= "Sentiments",title= "Sentiment value for the tweets") 
+```
+
+The bar-plot shows that the positive sentiment is the one with the highest total value by far and in general people tend to have a positive view of the technology (the other two following sentiment are trust and anticipation). This result could have been empathized by the fact that many machine learning algorithm have been introduced due to COVID-19. Indeed this result is support by the high frequency the word "covid" is detected. Moreover the plot shows that the negative (negative and fear) sentiment are way less detected. 
+
+Interesting is to look if there are differences in the sentiments according to the topic.
+```{r}
+ggplot(sent.topic_2, aes(x = Sentiment, y = Value , fill = Topic)) + 
+ theme_classic() +
+  geom_bar(stat="identity", position = "dodge") + 
+   scale_fill_brewer(palette = "Set1") +
+    labs(title= "Sentiment value for the tweets according to their topic") 
+```
+
+This chart shows that there is not much difference in the sentiment of tweets depending on the topic classification made before. Hence can be stated that there ate not two clear front, pro and con AI.
+
+Lastly I will classify the tweets according to a binary sentiment and then display the most occurrence words depending on negative or positive tweets.
+```{r}
+td <- tidy(dtm) 
+
+sentiments <- td %>% 
+   inner_join(get_sentiments("bing"), by = c(term = "word")) 
+
+sentiments <- sentiments %>% 
+              count(sentiment, term, wt = count) %>% 
+              ungroup() %>% filter(n >= 5) %>% 
+              mutate(n = ifelse(sentiment == "negative", -n, n)) %>% 
+              mutate(term = reorder(term, n))
+
+sentiments <- sentiments[sentiments$n >= 60 | sentiments$n <= -20,]
+
+ggplot(sentiments, aes(term, n, fill = sentiment)) + 
+  geom_bar(stat = "identity") +
+  theme_classic() +
+  labs(title= "Principal word for the contribution to the sentiment", y = "Words", x = "Contribution")  + coord_flip()
+```
+
+The plot shows the most used words that characteristics negative and positive labeled tweets. As can be seen, regarding the positive ones, most occurrence words recall an idea of growth, beneficial and confidential. On the other hand negative words underlie a fear of something that could be a problem a risk. 
+
+```{r}
+head(df.ai[df.ai$text %like% "cloud", 1])
+```
+
+By looking at the tweets that contain the therm "cloud" can be seen that this word compare in negative labeled tweets because many of them concern cyber-security. 
+
+```{r}
+head(df.ai[df.ai$text %like% "drones", 1])
+```
+
+By checking the tweets that present the words "drone" can be seen that only a couple of them talks about military drone and so that could have a negative connotation. The others seems to have a positive sentiment and so this could be a case of missclassificaiton.
+
+# V. Conclusion, Advantage and Disadvantage
+
+Resuming the research questions:
+
+**There are different conversation topics?**
+Thanks to this analysis it can be stated that tweets on AI goes from technical to business tweet covering a wide range of topics.This can be seem by the word-cloud. Element that shows technical word, more business and even more colloquial one. Nevertheless it has been shown that, even if border are not so market, a topic modelling can be done showing a more technical topic and a less one. As already said this could be a result of the presence of two different class of user, one more competent and one less.
+
+**What people think about this technology, what are the feeling about the topic?**
+One pivotal aspect of the analysis was the sentimental one. Categorization that shows an overall positive feeling with the presence of important value for trust and anticipation. Moreover the categorization in the two different topics seems not to cave an influence on the sentiment of tweets. 
+
+**Which one are the words that have the most influence on the sentiment of users?**
+For completing the sentiment analysis I have displayed the most counted words for positive and negative tweets. This analysis has shown that both sentiment are characterizes by the words that are facing the future. This could be a sign of the relative young age of the discipline and the huge steps made in the recent years leading to an undefined future perspective.
+
+Moreover an aspect that needs to take into account is the high presence of the term "covid". In the past few month it was widely broadcaster by the news the important that artificial intelligence algorithm can play in the battle against this pandemic. This aspect could have helped developing the positive overall sentiments found in the analysis.
+
+The different technique used allowed a fast overview of the topic giving easy and fast readable result. Moreover this the previous steps can be scaled using larger amount. Furthermore the previous methods allows to perform a good analysis even with only free standards Twitter API, where for example using a survey would have been expensive by far.
+
+On the down side the previous analysis has not taken into account any information about the user. With other methodology, for example by analyzing the result of a survey, more detailed insight could have obtained. For example by asking personal information such as the level of instruction, age, working experience, living area, perhaps a correlation would have been found between these parameters and the opinion on AI leading to a more detailed analysis.
+
+Moreover the methodology used has not taken into account any type of historical data, hence, it is not possible to evaluate the any kind of trend in the opinion of people. Furthermore would have been interesting analyse historical data in correlation with particular global phenomenon and so test the change in the sentiment according to other facts. For example maybe the perception on this theme may have been changed before and after the Cambridge Analytica scandal and it would have been interesting understand whether this change of perception has been maintained or not.
+
+Another disadvantage of the technique used is for example the potential missclassification of words for the sentiment analysis, has shown for the "drone" word. This could have lead to a not so accurate analysis of the tweets and so to a not complete correct perception of them.
+
+In conclusion it can be stated that the overall opinion about artificial intelligence is positive showing significant expectations for the future, but always with an eye for possible risks.
