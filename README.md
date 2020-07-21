@@ -1,5 +1,12 @@
 # CSS_ArtificialIntelligence
 
+For reading only it is recommended to use the AI.html file.
+
+ The file AI.html is a html knit of the previous file and it represent the complete and final version of the work.
+ **In order to be displayed this file need to be downladed.**
+
+For furhter testing is recommended to use the AI.Rmd file.
+
 The file AI.Rmd is a R markdown document that contains the code and the text of the work. The code can be runned without the need of connecting to the Twitter API.
 All the computation are performed using the previous created dataset.
 The code can be runned with new data by connecting it to the Twitter API, to do this you must:
@@ -13,7 +20,6 @@ only {r}
 *df.ai <- df.ai[,c(2,6,9)] # keeping only useful column* <br>
 and uncomment the line 141: *#df.ai <- df.ai[,c(1,5,8)] # keeping only useful column*
         
- The file AI.html is a html knit of the previous file and it represent the complete and final version of the work.
- **In order to be displayed this file need to be downladed.**
+
  
  The file df.ai.csv is the dataset in csv format created at the beginning and it is the one from which the tweet are taken the analysis in the work.
