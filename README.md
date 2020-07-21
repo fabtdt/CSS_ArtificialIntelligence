@@ -1,5 +1,9 @@
 # CSS_ArtificialIntelligence
 
+This work has been done by Fabio Taddei Dalla Torre, University freshman: 214924 for the Computation Social Science course.
+
+The main purpose of the work is to investigate public opinion in merit to artificial intelligence.
+
 For reading only it is recommended to use the AI.html file.
 
  The file AI.html is a html knit of the previous file and it represent the complete and final version of the work.
