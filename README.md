@@ -4,14 +4,14 @@ This work has been done by Fabio Taddei Dalla Torre, University freshman: 214924
 
 The main purpose of the work is to investigate public opinion in merit to artificial intelligence.
 
-For reading only it is recommended to use the AI.html file.
+For reading only it is recommended to use the *AI.html* file.
 
  The file AI.html is a html knit of the previous file and it represent the complete and final version of the work.
  **In order to be displayed this file need to be downladed.**
 
 For furhter testing is recommended to use the *AI.Rmd* file.
 
-The file *AI.Rmd* is a R markdown document that contains the code and the text of the work. The code can be runned without the need of connecting to the Twitter API.
+The file AI.Rmd is a R markdown document that contains the code and the text of the work. The code can be runned without the need of connecting to the Twitter API.
 All the computation are performed using the previous created dataset.
 The code can be runned with new data by connecting it to the Twitter API, to do this you must:
    
