@@ -1,4 +1,4 @@
-# CSS_ArtificialIntelligence
+# Understanding the public opinion on Artificial Intelligence
 
 ## Overview
 
